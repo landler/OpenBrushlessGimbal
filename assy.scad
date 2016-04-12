@@ -5,7 +5,7 @@ cam_yaw = 0;
 total_z_translation = 75;
 
 translate([0,0,-8])
-    rotate([180,0,0])
+    rotate([180,0,360/6*.5])
         import("supsension.stl", convexity=4);
 
 module centered_gopro(){    
@@ -42,3 +42,9 @@ rotate([0,0,cam_yaw]){
         }
     }
 }
+translate([0,0,-20])
+    rotate([0,0,180])
+        import("opg_top_plate.stl", convexity=3);
+translate([0,0,-20])
+    rotate([0,180,0])
+        import("opg_top_plate_epm_cover.stl", convexity=3);
