@@ -7,12 +7,14 @@ slot_gap = 47.8; // (40-3.1*2) * sqrt(2)
 
 standoff_height = 15;
 
-plate_width = 55;
+plate_width = 55+20;
 
 slot_width = 3.2;
 plate_thick = 3.5;
 
 outer_hull_thick = 1;    
+
+shroud_add = 5;
 
 module standoff(){
     difference(){
@@ -48,9 +50,10 @@ module plate(){
     translate([0,0,standoff_height]){
         difference(){
             union(){
-                translate([-21-4+25,-plate_width*.5,0])
-                    cube([93-25,plate_width,plate_thick]);
-                translate([-21-4+30-5,0,plate_thick*.5])
+                translate([10,0,0])
+                    translate([-21-4+25,-plate_width*.5,0])
+                        cube([93-25-10,plate_width,plate_thick]);
+                translate([-21-4+30-5+12,0,plate_thick*.5])
                     cylinder(r=plate_width*.5,h=plate_thick,center=true);
             }
             union(){
@@ -91,25 +94,25 @@ module plate(){
 }
 
 module outer_hull(){
-    translate([0,0,standoff_height*.5])
+    translate([12,0,standoff_height*.5-shroud_add*.5])
     difference(){
-        cylinder(r=plate_width*.5,h=standoff_height,center=true);
-        cylinder(r=plate_width*.5-outer_hull_thick,h=standoff_height+1,center=true);
+        cylinder(r=plate_width*.5,h=standoff_height+shroud_add,center=true);
+        cylinder(r=plate_width*.5-outer_hull_thick,h=standoff_height+1+shroud_add,center=true);
         translate([0,-500,-15])
             cube([1000,1000,30]);
     }
-    translate([0,plate_width*.5-outer_hull_thick,0])
-        cube([68,outer_hull_thick,standoff_height]);
-    translate([0,-plate_width*.5,0])
-        cube([68,outer_hull_thick,standoff_height]);    
+    translate([10,plate_width*.5-outer_hull_thick,-shroud_add])
+        cube([58,outer_hull_thick,standoff_height+shroud_add]);
+    translate([10,-plate_width*.5,-shroud_add])
+        cube([58,outer_hull_thick,standoff_height+shroud_add]);    
 }
 
 module mouse_ears(){
     translate([0,0,standoff_height+plate_thick-0.15]){
-        translate([68,plate_width*.5,0.15*.5])
-         cylinder(r=5, h=0.15,center=true);
-        translate([68,-plate_width*.5,0.15*.5])
-         cylinder(r=5, h=0.15,center=true);
+        translate([68,plate_width*.5,0.3*.5])
+         cylinder(r=5, h=0.3,center=true);
+        translate([68,-plate_width*.5,0.3*.5])
+         cylinder(r=5, h=0.3,center=true);
     }
 }
 

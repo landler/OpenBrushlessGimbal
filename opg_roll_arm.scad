@@ -6,8 +6,8 @@
                 import("PitchArm.STL", convexity=3);
     }
 }*/
-        
+
+    
 use <arm_module.scad>;
-total_z_translation = 52;
-total_x_translation = -44;
-make_arm();
+
+make_arm(52, -34);

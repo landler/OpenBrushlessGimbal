@@ -1,4 +1,4 @@
-cam_roll = 20;
+cam_roll = -30;
 cam_pitch = -10;
 cam_yaw = 0;
 
@@ -30,13 +30,13 @@ rotate([0,0,cam_yaw]){
                 rotate([0,0,180])
                 import("opg_roll_arm.stl", convexity=4);
                 
-            translate([20+31,40,0])
+            translate([20+31,33,0])
                 rotate([0,90,90+180])
                     import("motor.stl",convexity=3);
                     
                 
 
-            translate([20+31,27,0])
+            translate([20+31,20,0])
                 rotate([90,-90+cam_pitch,0])
                     centered_gopro();
         }

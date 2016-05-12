@@ -3,10 +3,12 @@ cam_plate_mount_bw = 45; // Back width
 cam_plate_mount_l = 37;
 
 arms = 6;
-main_hole_r = 5;
+main_hole_r = 4.5;
 
 arm_length = 30;
 base_height = 10;
+
+plate_thick = 2.5;
 
 plate_width = 55+20;
 
@@ -25,12 +27,12 @@ module main_holes(radius=main_hole_r){
 }
 
 module main_plate(){
-    translate([0,0,1])
-        cylinder(r=plate_width*.5,2,center=true);
-    translate([40,0,1])
-        cylinder(r=plate_width*.5,2,center=true);
+    translate([0,0,plate_thick*.5])
+        cylinder(r=plate_width*.5,plate_thick,center=true, $fn=128);
+    translate([40,0,plate_thick*.5])
+        cylinder(r=plate_width*.5,plate_thick,center=true, $fn=128);
     translate([0,-plate_width*.5])
-        cube([40,plate_width,2]);
+        cube([40,plate_width,plate_thick]);
 }
 
 module mount_holes(){
@@ -54,7 +56,7 @@ module mount_holes(){
 difference(){
     main_plate();
     translate([0,0,-1])
-        rotate([0,0,360/arms*.5])
+        rotate([0,0,360/arms*0.5])
             main_holes();
     mount_holes();
    

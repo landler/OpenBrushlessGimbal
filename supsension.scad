@@ -3,8 +3,8 @@ import("SuspensionFrame.STL", convexity=3);*/
 
     
 arms = 6;
-main_hole_r = 5;
-main_hole_sub_r = 3;
+main_hole_r = 5.5;
+main_hole_sub_r = 4.5;
 arm_length = 30;
 base_height = 0.5;
 rounding_radius = 1;
