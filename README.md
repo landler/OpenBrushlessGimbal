@@ -1,4 +1,4 @@
-# OpenBrushlessGimbal
+# OpenParamtericGimbal
 WIP
 
 
